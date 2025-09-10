@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Brand Colors (Orange-Red from Design) -->
+    <color name="primary_color">#FF6B35</color>
+    <color name="primary_dark">#E55A2B</color>
+    <color name="primary_light">#FF8A5B</color>
+
+    <!-- Background & Surface -->
+    <color name="background">#F8F9FA</color>
+    <color name="surface_color">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+
+    <!-- Input Colors -->
+    <color name="input_background">#FFFFFF</color>
+    <color name="input_stroke">#E0E0E0</color>
+    <color name="input_stroke_focused">#FF6B35</color>
+    <color name="input_stroke_color">#E0E0E0</color>
+    <color name="input_stroke_selector">#CCCCCC</color>
+
+    <!-- Secondary Colors (Blue for cards/accents) -->
+    <color name="secondary_color">#2196F3</color>
+    <color name="secondary_dark">#1976D2</color>
+    <color name="secondary_light">#42A5F5</color>
+
+    <!-- Accent Colors -->
+    <color name="accent_green">#4CAF50</color>
+    <color name="accent_red">#F44336</color>
+    <color name="accent_orange">#FF9800</color>
+    <color name="accent_purple">#9C27B0</color>
+    <color name="accent_blue">#03DAC6</color>
+
+    <!-- Button Colors -->
+    <color name="button_primary">#FF6B35</color>
+    <color name="button_primary_pressed">#E55A2B</color>
+    <color name="button_secondary">#F5F5F5</color>
+    <color name="button_text_secondary">#424242</color>
+
+    <!-- Bottom Navigation Colors -->
+    <color name="bottom_nav_selected">#FF6B35</color>
+    <color name="bottom_nav_unselected">#9E9E9E</color>
+    <color name="bottom_nav_selector">#FFFFFF</color>
+
+    <!-- Special & Utility Colors -->
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="black_20">#33000000</color>
+    <color name="overlay">#80000000</color>
+    <color name="divider_color">#E0E0E0</color>
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+</resources>

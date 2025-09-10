@@ -1,0 +1,117 @@
+package com.example.cashplan
+
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cashplan.databinding.FragmentExploreBinding
+
+class ExploreFragment : Fragment() {
+
+    private var _binding: FragmentExploreBinding? = null
+    private val binding get() = _binding!!
+
+    // Sample data for categories and destinations
+    private val categories = listOf("Beaches", "Mountains", "Cities", "Adventure", "Relaxation", "Cultural")
+    private val destinations = mutableListOf<Destination>()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentExploreBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupViews()
+        setupClickListeners()
+        loadSampleData()
+    }
+
+    private fun setupViews() {
+        // Setup search functionality
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                filterDestinations(s.toString())
+            }
+        })
+
+        // Setup RecyclerViews
+        setupCategoriesRecyclerView()
+        setupDestinationsRecyclerView()
+    }
+
+    private fun setupClickListeners() {
+        binding.filterButton.setOnClickListener {
+            showToast("Filter clicked - implement filter dialog")
+        }
+    }
+
+    private fun setupCategoriesRecyclerView() {
+        // For now, just show a toast when clicked
+        // You can implement a proper adapter later
+        showToast("Categories loaded: ${categories.size} items")
+    }
+
+    private fun setupDestinationsRecyclerView() {
+        binding.destinationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        // You can implement a proper adapter here later
+        showToast("Destinations setup complete")
+    }
+
+    private fun loadSampleData() {
+        // Add some sample destinations
+        destinations.apply {
+            clear()
+            add(Destination("Paris, France", "From $800", "Romantic city with amazing architecture"))
+            add(Destination("Tokyo, Japan", "From $1200", "Modern city with rich culture"))
+            add(Destination("Bali, Indonesia", "From $600", "Tropical paradise with beautiful beaches"))
+            add(Destination("New York, USA", "From $900", "The city that never sleeps"))
+            add(Destination("Rome, Italy", "From $700", "Ancient history and amazing food"))
+        }
+
+        // Update UI to show we have data
+        showToast("${destinations.size} destinations loaded")
+    }
+
+    private fun filterDestinations(query: String) {
+        if (query.isEmpty()) {
+            // Show all destinations
+            showToast("Showing all destinations")
+        } else {
+            // Filter destinations based on query
+            val filtered = destinations.filter {
+                it.name.contains(query, ignoreCase = true) ||
+                        it.description.contains(query, ignoreCase = true)
+            }
+            showToast("Found ${filtered.size} results for '$query'")
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    // Data class for destinations
+    data class Destination(
+        val name: String,
+        val price: String,
+        val description: String
+    )
+}

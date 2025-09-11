@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViews() {
-        // Set greeting based on time of day
         val greeting = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
             in 5..11 -> getString(R.string.good_morning)
             in 12..17 -> getString(R.string.good_afternoon)
@@ -43,43 +42,33 @@ class HomeFragment : Fragment() {
         }
         binding.greetingText.text = greeting
 
-        // Set user name (you can get this from SharedPreferences or Firebase)
         binding.userName.text = getString(R.string.default_user_name)
 
-        // Set budget amount (you can get this from SharedPreferences)
         binding.budgetAmount.text = getString(R.string.default_budget)
     }
 
     private fun setupClickListeners() {
-        // Edit Budget
         binding.editBudget.setOnClickListener {
             showEditBudgetDialog()
         }
 
-        // Profile Image
         binding.profileImage.setOnClickListener {
-            // Navigate to profile fragment
             navigateToProfile()
         }
 
-        // Quick Action Cards
         binding.planTripCard.setOnClickListener {
-            // Handle plan trip action
             showToast("Plan Trip clicked")
         }
 
         binding.findHotelsCard.setOnClickListener {
-            // Handle find hotels action
             showToast("Find Hotels clicked")
         }
 
         binding.restaurantsCard.setOnClickListener {
-            // Handle restaurants action
             showToast("Restaurants clicked")
         }
 
         binding.activitiesCard.setOnClickListener {
-            // Handle activities action
             showToast("Activities clicked")
         }
     }
@@ -106,10 +95,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateBudget(amount: String) {
-        // Update the budget display
         binding.budgetAmount.text = "$$amount"
 
-        // Save to SharedPreferences
         val sharedPref = requireActivity().getSharedPreferences("BudgetPrefs", 0)
         with(sharedPref.edit()) {
             putString("budget_amount", amount)
@@ -120,7 +107,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToProfile() {
-        // Get the HomeActivity and switch to profile tab
         (requireActivity() as? com.example.cashplan.HomeActivity)?.let { homeActivity ->
             homeActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.selectedItemId = R.id.nav_profile
         }

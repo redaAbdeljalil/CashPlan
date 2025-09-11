@@ -16,10 +16,9 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up bottom navigation
+
         setupBottomNavigation()
 
-        // Load default fragment (Home)
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
             binding.bottomNavigation.selectedItemId = R.id.nav_home

@@ -48,7 +48,6 @@ class OnboardingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_onboarding, container, false)
     }
 
@@ -58,7 +57,6 @@ class OnboardingFragment : Fragment() {
         val titleText: TextView = view.findViewById(R.id.titleText)
         val descriptionText: TextView = view.findViewById(R.id.descriptionText)
 
-        // Set the content
         illustrationImage.setImageResource(imageRes)
         titleText.text = title
         descriptionText.text = description

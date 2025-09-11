@@ -29,23 +29,19 @@ class OnboardingActivity : AppCompatActivity() {
         initViews()
         setupViewPager()
         setupClickListeners()
-        updateUI(0) // Start with the first page
+        updateUI(0)
 
-        // --- NEW CODE: Migrate from onBackPressed() to OnBackPressedDispatcher ---
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val currentItem = viewPager.currentItem
                 if (currentItem > 0) {
-                    // Go to the previous onboarding page if not on the first one
                     viewPager.currentItem = currentItem - 1
                 } else {
-                    // If on the first page, let the default back action occur (finish the activity)
                     isEnabled = false
                     onBackPressedDispatcher.onBackPressed()
                 }
             }
         })
-        // --- END OF NEW CODE ---
     }
 
     private fun initViews() {
@@ -75,7 +71,6 @@ class OnboardingActivity : AppCompatActivity() {
             if (currentItem < adapter.itemCount - 1) {
                 viewPager.currentItem = currentItem + 1
             } else {
-                // Last page - navigate to the login/signup activity
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -91,13 +86,9 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun updateUI(position: Int) {
-        // Update dots
         updateDots(position)
-
-        // Update back arrow visibility
         backArrow.isVisible = position > 0
 
-        // Update button text
         val buttonText = if (position == adapter.itemCount - 1) {
             getString(R.string.get_started)
         } else {
@@ -107,17 +98,14 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun updateDots(position: Int) {
-        // Reset all dots to inactive state
         dot1.setBackgroundResource(R.drawable.dot_inactive)
         dot2.setBackgroundResource(R.drawable.dot_inactive)
         dot3.setBackgroundResource(R.drawable.dot_inactive)
 
-        // Reset all dot sizes to inactive size
         setDotSize(dot1, 8)
         setDotSize(dot2, 8)
         setDotSize(dot3, 8)
 
-        // Set active dot
         when (position) {
             0 -> {
                 dot1.setBackgroundResource(R.drawable.dot_active)

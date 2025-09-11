@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
-import com.example.cashplan.R
 import com.example.cashplan.databinding.FragmentSavedBinding
 
 class SavedFragment : Fragment() {
@@ -40,7 +39,6 @@ class SavedFragment : Fragment() {
         savedPagerAdapter = SavedPagerAdapter(this)
         binding.savedViewPager.adapter = savedPagerAdapter
 
-        // Connect TabLayout with ViewPager2
         TabLayoutMediator(binding.savedTabs, binding.savedViewPager) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
@@ -48,13 +46,11 @@ class SavedFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.exploreButton.setOnClickListener {
-            // Navigate to explore fragment
             navigateToExplore()
         }
     }
 
     private fun checkSavedItems() {
-        // Check if user has saved items
         val hasSavedItems = getSavedItemsCount() > 0
 
         if (hasSavedItems) {
@@ -67,13 +63,11 @@ class SavedFragment : Fragment() {
     }
 
     private fun getSavedItemsCount(): Int {
-        // Get saved items count from SharedPreferences or database
         val sharedPref = requireActivity().getSharedPreferences("SavedItems", 0)
         return sharedPref.getInt("saved_count", 0)
     }
 
     private fun navigateToExplore() {
-        // Get the HomeActivity and switch to explore tab
         (requireActivity() as? com.example.cashplan.HomeActivity)?.let { homeActivity ->
             homeActivity.findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navigation)?.selectedItemId = R.id.nav_explore
         }
@@ -88,7 +82,6 @@ class SavedFragment : Fragment() {
         _binding = null
     }
 
-    // ViewPager2 Adapter for different saved categories
     private inner class SavedPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
         override fun getItemCount(): Int = tabTitles.size
@@ -99,7 +92,6 @@ class SavedFragment : Fragment() {
     }
 }
 
-// Fragment for each saved category
 class SavedCategoryFragment : Fragment() {
 
     private var categoryPosition: Int = 0
@@ -128,7 +120,6 @@ class SavedCategoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Create a simple view for each category
         val view = View(requireContext())
         view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         return view
@@ -137,12 +128,10 @@ class SavedCategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Load saved items for this category
         loadSavedItemsForCategory(categoryPosition)
     }
 
     private fun loadSavedItemsForCategory(category: Int) {
-        // Implement loading saved items based on category
         val categoryName = when (category) {
             0 -> "All"
             1 -> "Trips"
@@ -152,8 +141,5 @@ class SavedCategoryFragment : Fragment() {
             else -> "All"
         }
 
-        // For now, just show a toast
-        // You can implement RecyclerView with saved items here
-        Toast.makeText(requireContext(), "Loading $categoryName saved items", Toast.LENGTH_SHORT).show()
     }
 }

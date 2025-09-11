@@ -16,7 +16,6 @@ class ExploreFragment : Fragment() {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
-    // Sample data for categories and destinations
     private val categories = listOf("Beaches", "Mountains", "Cities", "Adventure", "Relaxation", "Cultural")
     private val destinations = mutableListOf<Destination>()
 
@@ -38,7 +37,6 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupViews() {
-        // Setup search functionality
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -47,7 +45,6 @@ class ExploreFragment : Fragment() {
             }
         })
 
-        // Setup RecyclerViews
         setupCategoriesRecyclerView()
         setupDestinationsRecyclerView()
     }
@@ -59,19 +56,15 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupCategoriesRecyclerView() {
-        // For now, just show a toast when clicked
-        // You can implement a proper adapter later
         showToast("Categories loaded: ${categories.size} items")
     }
 
     private fun setupDestinationsRecyclerView() {
         binding.destinationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        // You can implement a proper adapter here later
         showToast("Destinations setup complete")
     }
 
     private fun loadSampleData() {
-        // Add some sample destinations
         destinations.apply {
             clear()
             add(Destination("Paris, France", "From $800", "Romantic city with amazing architecture"))
@@ -81,16 +74,13 @@ class ExploreFragment : Fragment() {
             add(Destination("Rome, Italy", "From $700", "Ancient history and amazing food"))
         }
 
-        // Update UI to show we have data
         showToast("${destinations.size} destinations loaded")
     }
 
     private fun filterDestinations(query: String) {
         if (query.isEmpty()) {
-            // Show all destinations
             showToast("Showing all destinations")
         } else {
-            // Filter destinations based on query
             val filtered = destinations.filter {
                 it.name.contains(query, ignoreCase = true) ||
                         it.description.contains(query, ignoreCase = true)
@@ -108,7 +98,6 @@ class ExploreFragment : Fragment() {
         _binding = null
     }
 
-    // Data class for destinations
     data class Destination(
         val name: String,
         val price: String,

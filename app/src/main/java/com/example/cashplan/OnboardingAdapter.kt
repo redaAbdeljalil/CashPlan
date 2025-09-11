@@ -15,21 +15,21 @@ class OnboardingAdapter(fragmentActivity: FragmentActivity) :
         return when (position) {
             0 -> OnboardingFragment.newInstance(
                 0,
-                "Take Control of Your Finances", // Replace with string resource
+                "Take Control of Your Finances",
                 "Start your journey to financial freedom with our easy-to-use budget planning tools and smart insights.",
-                R.drawable.img // Replace with your image resource
+                R.drawable.img
             )
             1 -> OnboardingFragment.newInstance(
                 1,
-                "Track Your Spending", // Replace with string resource
+                "Track Your Spending",
                 "Monitor your expenses and see where your money goes with detailed analytics and reports.",
-                R.drawable.img // Replace with your image resource
+                R.drawable.img
             )
             2 -> OnboardingFragment.newInstance(
                 2,
-                "Achieve Your Goals", // Replace with string resource
+                "Achieve Your Goals",
                 "Set savings goals and get personalized tips to reach your financial milestones faster.",
-                R.drawable.img // Replace with your image resource
+                R.drawable.img
             )
             else -> OnboardingFragment.newInstance(0, "", "", R.drawable.img)
         }

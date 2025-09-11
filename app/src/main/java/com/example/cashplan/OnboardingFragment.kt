@@ -4,27 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.cashplan.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {
 
-    private var page: Int = 0
-    private var title: String? = null
-    private var description: String? = null
-    private var imageRes: Int = 0
+    // View Binding instance for the fragment's layout
+    private var _binding: FragmentOnboardingBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
-        private const val ARG_PAGE = "page"
         private const val ARG_TITLE = "title"
         private const val ARG_DESCRIPTION = "description"
         private const val ARG_IMAGE = "image"
 
-        fun newInstance(page: Int, title: String, description: String, imageRes: Int): OnboardingFragment {
+        // Factory method to create a new fragment instance with data
+        fun newInstance(title: String, description: String, imageRes: Int): OnboardingFragment {
             val fragment = OnboardingFragment()
             val args = Bundle().apply {
-                putInt(ARG_PAGE, page)
                 putString(ARG_TITLE, title)
                 putString(ARG_DESCRIPTION, description)
                 putInt(ARG_IMAGE, imageRes)
@@ -34,31 +31,29 @@ class OnboardingFragment : Fragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            page = it.getInt(ARG_PAGE)
-            title = it.getString(ARG_TITLE)
-            description = it.getString(ARG_DESCRIPTION)
-            imageRes = it.getInt(ARG_IMAGE)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_onboarding, container, false)
+    ): View {
+        // Inflate the layout using View Binding
+        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val illustrationImage: ImageView = view.findViewById(R.id.illustrationImage)
-        val titleText: TextView = view.findViewById(R.id.titleText)
-        val descriptionText: TextView = view.findViewById(R.id.descriptionText)
 
-        illustrationImage.setImageResource(imageRes)
-        titleText.text = title
-        descriptionText.text = description
+        // Retrieve arguments and populate views using View Binding
+        arguments?.let {
+            binding.titleText.text = it.getString(ARG_TITLE)
+            binding.descriptionText.text = it.getString(ARG_DESCRIPTION)
+            binding.illustrationImage.setImageResource(it.getInt(ARG_IMAGE))
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Clear the binding reference to prevent memory leaks
+        _binding = null
     }
 }

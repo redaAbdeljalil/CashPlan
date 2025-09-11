@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.cashplan.databinding.ActivityHomeBinding
-import com.example.cashplan.ProfileFragment
-import com.example.cashplan.SavedFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,7 +13,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         setupBottomNavigation()
 

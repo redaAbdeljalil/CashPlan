@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Custom TextInputLayout Style -->
     <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/input_background</item>
         <item name="boxStrokeColor">@color/input_stroke_color</item>
@@ -13,7 +12,6 @@
     </style>
 
 
-    <!-- Text Styles -->
     <style name="HeadlineText">
         <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
@@ -36,7 +34,6 @@
         <item name="android:padding">4dp</item>
     </style>
 
-<!-- Base application theme -->
 <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="colorPrimary">@color/primary_color</item>
     <item name="colorPrimaryVariant">@color/primary_dark</item>
@@ -54,14 +51,12 @@
     <item name="android:windowLightNavigationBar">true</item>
 </style>
 
-<!-- Splash Screen Theme -->
 <style name="SplashTheme" parent="AppTheme">
     <item name="android:windowBackground">@drawable/splash_background</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowFullscreen">false</item>
 </style>
 
-<!-- Button Styles -->
 <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">56dp</item>
@@ -94,7 +89,6 @@
     <item name="android:background">@drawable/button_outline</item>
 </style>
 
-<!-- Card Styles -->
 <style name="CardStyle" parent="Widget.MaterialComponents.CardView">
     <item name="cardCornerRadius">16dp</item>
     <item name="cardElevation">4dp</item>
@@ -109,7 +103,6 @@
     <item name="cardElevation">3dp</item>
 </style>
 
-<!-- Text Styles -->
 <style name="HeadingLarge">
     <item name="android:textSize">28sp</item>
     <item name="android:textColor">@color/text_primary</item>
@@ -149,7 +142,6 @@
     <item name="android:fontFamily">sans-serif</item>
 </style>
 
-<!-- Input Field Styles -->
 <style name="InputFieldStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
     <item name="boxBackgroundColor">@android:color/white</item>
     <item name="boxCornerRadiusTopStart">12dp</item>
@@ -162,7 +154,6 @@
     <item name="endIconTint">@android:color/darker_gray</item>
 </style>
 
-<!-- Bottom Navigation Style -->
 <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
     <item name="itemIconTint">@color/bottom_nav_selector</item>
     <item name="itemTextColor">@color/bottom_nav_selector</item>
@@ -185,7 +176,6 @@
     <item name="android:textStyle">bold</item>
 </style>
 
-<!-- Toolbar Style -->
 <style name="ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
     <item name="android:background">@color/background</item>
     <item name="titleTextColor">@color/text_primary</item>
@@ -193,14 +183,17 @@
     <item name="android:elevation">0dp</item>
 </style>
 
-<!-- Progress Bar Style -->
 <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar.Horizontal">
     <item name="android:progressDrawable">@drawable/progress_bar_custom</item>
     <item name="android:minHeight">6dp</item>
     <item name="android:maxHeight">6dp</item>
 </style>
 
-<!-- Floating Action Button Style -->
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
 <style name="FABStyle" parent="Widget.MaterialComponents.FloatingActionButton">
     <item name="backgroundTint">@color/primary_color</item>
     <item name="tint">@android:color/white</item>

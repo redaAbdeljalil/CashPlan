@@ -16,8 +16,16 @@ class ExploreFragment : Fragment() {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
-    private val categories = listOf("Beaches", "Mountains", "Cities", "Adventure", "Relaxation", "Cultural")
+    private val categories = listOf(
+        Category("Beaches", R.drawable.ic_beach, R.color.primary_color),
+        Category("Mountains", R.drawable.ic_mountain, R.color.secondary_color),
+        Category("Cities", R.drawable.ic_city, R.color.accent_orange),
+        Category("Adventure", R.drawable.ic_activities, R.color.accent_green),
+        Category("Relaxation", R.drawable.ic_relax, R.color.accent_purple),
+        Category("Cultural", R.drawable.ic_cultural, R.color.primary_color)
+    )
     private val destinations = mutableListOf<Destination>()
+    private lateinit var destinationsAdapter: DestinationAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,9 +39,9 @@ class ExploreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadSampleData()
         setupViews()
         setupClickListeners()
-        loadSampleData()
     }
 
     private fun setupViews() {
@@ -50,18 +58,21 @@ class ExploreFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.filterButton.setOnClickListener {
+        binding.filterButtonCard.setOnClickListener {
             showToast("Filter clicked - implement filter dialog")
         }
     }
 
     private fun setupCategoriesRecyclerView() {
-        showToast("Categories loaded: ${categories.size} items")
+        binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val categoryAdapter = CategoryAdapter(categories)
+        binding.categoriesRecyclerView.adapter = categoryAdapter
     }
 
     private fun setupDestinationsRecyclerView() {
+        destinationsAdapter = DestinationAdapter(destinations)
         binding.destinationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        showToast("Destinations setup complete")
+        binding.destinationsRecyclerView.adapter = destinationsAdapter
     }
 
     private fun loadSampleData() {
@@ -72,21 +83,25 @@ class ExploreFragment : Fragment() {
             add(Destination("Bali, Indonesia", "From $600", "Tropical paradise with beautiful beaches"))
             add(Destination("New York, USA", "From $900", "The city that never sleeps"))
             add(Destination("Rome, Italy", "From $700", "Ancient history and amazing food"))
+            add(Destination("Kyoto, Japan", "From $1100", "Traditional temples and gardens"))
+            add(Destination("Rio de Janeiro, Brazil", "From $750", "Vibrant carnival and stunning beaches"))
         }
 
-        showToast("${destinations.size} destinations loaded")
+        if (::destinationsAdapter.isInitialized) {
+            destinationsAdapter.updateData(destinations)
+        }
     }
 
     private fun filterDestinations(query: String) {
-        if (query.isEmpty()) {
-            showToast("Showing all destinations")
+        val filtered = if (query.isEmpty()) {
+            destinations
         } else {
-            val filtered = destinations.filter {
+            destinations.filter {
                 it.name.contains(query, ignoreCase = true) ||
                         it.description.contains(query, ignoreCase = true)
             }
-            showToast("Found ${filtered.size} results for '$query'")
         }
+        destinationsAdapter.updateData(filtered)
     }
 
     private fun showToast(message: String) {
@@ -97,10 +112,4 @@ class ExploreFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    data class Destination(
-        val name: String,
-        val price: String,
-        val description: String
-    )
 }

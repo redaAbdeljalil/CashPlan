@@ -1,6 +1,7 @@
 package com.example.cashplan
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
@@ -41,10 +42,8 @@ class HomeFragment : Fragment() {
             else -> getString(R.string.good_evening)
         }
         binding.greetingText.text = greeting
-
-        binding.userName.text = getString(R.string.default_user_name)
-
-        binding.budgetAmount.text = getString(R.string.default_budget)
+        binding.userName.text = "John Doe" // To be replaced with dynamic data
+        binding.budgetAmount.text = loadBudget()
     }
 
     private fun setupClickListeners() {
@@ -95,9 +94,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateBudget(amount: String) {
-        binding.budgetAmount.text = "$$amount"
+        val formattedAmount = "$$amount"
+        binding.budgetAmount.text = formattedAmount
 
-        val sharedPref = requireActivity().getSharedPreferences("BudgetPrefs", 0)
+        val sharedPref = requireActivity().getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
             putString("budget_amount", amount)
             apply()
@@ -106,10 +106,14 @@ class HomeFragment : Fragment() {
         showToast(getString(R.string.budget_updated))
     }
 
+    private fun loadBudget(): String {
+        val sharedPref = requireActivity().getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE)
+        val amount = sharedPref.getString("budget_amount", "0.00")
+        return "$$amount"
+    }
+
     private fun navigateToProfile() {
-        (requireActivity() as? com.example.cashplan.HomeActivity)?.let { homeActivity ->
-            homeActivity.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.selectedItemId = R.id.nav_profile
-        }
+        (requireActivity() as? HomeActivity)?.findViewById<BottomNavigationView>(R.id.bottom_navigation)?.selectedItemId = R.id.nav_profile
     }
 
     private fun showToast(message: String) {

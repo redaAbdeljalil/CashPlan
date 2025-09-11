@@ -28,56 +28,48 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description">Description</string>
 
-        <!-- Home Screen -->
-        <string name="good_morning">Good morning</string>
-        <string name="good_afternoon">Good afternoon</string>
-        <string name="good_evening">Good evening</string>
-        <string name="default_user_name">Alex</string>
-        <string name="available_budget">Available Budget</string>
-        <string name="edit">Edit</string>
-        <string name="default_budget">$2,500</string>
-        <string name="ready_to_plan">Ready to plan your next adventure</string>
+    <string name="good_morning">Good morning</string>
+    <string name="good_afternoon">Good afternoon</string>
+    <string name="good_evening">Good evening</string>
+    <string name="default_user_name">Alex</string>
+    <string name="available_budget">Available Budget</string>
+    <string name="edit">Edit</string>
+    <string name="default_budget">$2,500</string>
+    <string name="ready_to_plan">Ready to plan your next adventure</string>
 
-        <!-- Quick Actions -->
-        <string name="quick_actions">Quick Actions</string>
-        <string name="plan_trip">Plan Trip</string>
-        <string name="find_hotels">Find Hotels</string>
-        <string name="restaurants">Restaurants</string>
-        <string name="activities">Activities</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="plan_trip">Plan Trip</string>
+    <string name="find_hotels">Find Hotels</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="activities">Activities</string>
+    <string name="recent_plans">Recent Plans</string>
+    <string name="no_plans_yet">No plans yet</string>
+    <string name="start_planning_message">Start planning your first trip</string>
 
-        <!-- Recent Plans -->
-        <string name="recent_plans">Recent Plans</string>
-        <string name="no_plans_yet">No plans yet</string>
-        <string name="start_planning_message">Start planning your first trip</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="saved">Saved</string>
+    <string name="profile">Profile</string>
 
-        <!-- Navigation -->
-        <string name="home">Home</string>
-        <string name="explore">Explore</string>
-        <string name="saved">Saved</string>
-        <string name="profile">Profile</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="try_again">Try again</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit_budget_title">Edit Budget</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="budget_updated">Budget updated successfully</string>
 
-        <!-- General -->
-        <string name="loading">Loading...</string>
-        <string name="error">Error</string>
-        <string name="try_again">Try again</string>
-        <string name="cancel">Cancel</string>
-        <string name="confirm">Confirm</string>
-        <string name="save">Save</string>
-        <string name="delete">Delete</string>
-        <string name="edit_budget_title">Edit Budget</string>
-        <string name="enter_amount">Enter amount</string>
-        <string name="budget_updated">Budget updated successfully</string>
 
-        <!-- Content Descriptions -->
-        <string name="back_button">Back</string>
-        <string name="menu_button">Menu</string>
-        <string name="search_button">Search</string>
-        <string name="filter_button">Filter</string>
-        <string name="favorite_button">Add to favorites</string>
+    <string name="back_button">Back</string>
+    <string name="menu_button">Menu</string>
+    <string name="search_button">Search</string>
+    <string name="filter_button">Filter</string>
+    <string name="favorite_button">Add to favorites</string>
 
-    <!-- Additional strings to add to the existing strings.xml -->
 
-    <!-- Profile Screen -->
     <string name="default_email">alex@budgetsmart.com</string>
     <string name="member_since">Member since January 2025</string>
     <string name="edit_profile">Edit Profile</string>
@@ -93,7 +85,6 @@
     <string name="help_support">Help &amp; Support</string>
     <string name="logout">Logout</string>
 
-    <!-- Saved Screen -->
     <string name="saved_items">Saved Items</string>
     <string name="your_favorite_places">Your favorite places and experiences</string>
     <string name="no_saved_items">No saved items yet</string>
@@ -105,7 +96,6 @@
     <string name="saved_restaurants">Restaurants</string>
     <string name="saved_activities">Activities</string>
 
-    <!-- Explore Screen -->
     <string name="search_destinations">Search destinations, hotels, restaurants...</string>
     <string name="categories">Categories</string>
     <string name="popular_destinations">Popular Destinations</string>
@@ -116,33 +106,27 @@
     <string name="cultural">Cultural</string>
     <string name="food_travel">Food &amp; Travel</string>
 
-    <!-- Dialog -->
     <string name="dialog_edit_budget_hint">Enter your budget amount</string>
     <string name="first_fragment_label">First Fragment</string>
 
-    <!-- Categories -->
     <string name="beaches">Beaches</string>
     <string name="mountains">Mountains</string>
     <string name="cities">Cities</string>
     <string name="countryside">Countryside</string>
 
-    <!-- Common Actions -->
     <string name="view_details">View Details</string>
     <string name="book_now">Book Now</string>
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="remove_from_favorites">Remove from Favorites</string>
     <string name="share">Share</string>
 
-    <!-- Notifications -->
     <string name="new_recommendation">New recommendation based on your budget!</string>
     <string name="price_drop">Price drop alert for your saved items</string>
 
-    <!-- Errors -->
     <string name="network_error">Network error. Please check your connection.</string>
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
     <string name="invalid_budget">Please enter a valid budget amount</string>
 
-    <!-- Empty States -->
     <string name="no_results_found">No results found</string>
     <string name="try_different_search">Try a different search term</string>
     <string name="no_internet">No internet connection</string>

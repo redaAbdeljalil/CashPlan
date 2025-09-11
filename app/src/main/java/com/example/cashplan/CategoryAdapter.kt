@@ -1,0 +1,39 @@
+package com.example.cashplan
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cashplan.databinding.ItemCategoryBinding
+
+class CategoryAdapter(private val categories: List<Category>) :
+    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+
+    class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(category: Category) {
+            binding.categoryName.text = category.name
+            binding.categoryIcon.setImageResource(category.iconResId)
+            // Handle card background tinting if needed
+            binding.root.setOnClickListener {
+                // Handle category click
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+        val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CategoryViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        holder.bind(categories[position])
+    }
+
+    override fun getItemCount(): Int = categories.size
+}
+
+data class Category(
+    val name: String,
+    val iconResId: Int,
+    val colorResId: Int
+)
